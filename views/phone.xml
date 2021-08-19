@@ -45,7 +45,7 @@
         <field name="model">phone</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name"/>
+                <field name="manufacturer_ids" widget="many2many_tags"/> <field name="model_ids" widget="many2many_tags"/>
             </tree>
         </field>
     </record>
