@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='phone_action' model='ir.actions.act_window'>
+            <field name="name">Phone</field>
+            <field name="res_model">phone</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Phone market" id="phone_base_menu" />
+    <menuitem name="Phones" id="phones_menu" parent="phone_base_menu" action="phone_action"/>
+
+    <!-- Form View -->
+    <record id="phone_view_form" model="ir.ui.view">
+        <field name="name">Phone</field>
+        <field name="model">phone</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="manufacturer_ids" widget="many2many_tags"/>
+                        <field name="model_ids" widget="many2many_tags"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+        <!-- Tree(list) View -->
+    <record id="phone_view_tree" model="ir.ui.view">
+        <field name="name">Phones List</field>
+        <field name="model">phone</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="phone_view_search" model="ir.ui.view">
+        <field name="name">Phone Search</field>
+        <field name="model">phone</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="manufacturer_ids"/>
+                <filter string="Without manufacturer" name="without_manufacturer" domain="[('manufacturer_ids','=',False)]"/>
+                <field name="model_ids"/>
+                <filter string="Without model" name="without_model" domain="[('model_ids','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>
+
+

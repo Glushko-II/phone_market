@@ -1,5 +1,6 @@
 {
     'name': "Phone market",
+    'summary': "Buy with pleasure",
     'version': '1.0',
     'depends': ['base'],
     'author': "Ivan Glushko",
@@ -9,7 +10,7 @@
     """,
     # data files always loaded at installation
     'data': [
-        # 'views/phone_property_views.xml',
+         'views/phone.xml',
     ],
     # data files containing optionally loaded demonstration data
     'demo': [
