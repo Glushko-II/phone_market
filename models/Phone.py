@@ -19,6 +19,13 @@ class Phone(models.Model):
     _name = "phone"
     _description = "Phone"
 
-    name = fields.Char()
     manufacturer_ids = fields.Many2many('phone.manufacturer', string='Phone manufacturers')
     model_ids = fields.Many2many('phone.model', string='Phone models')
+
+
+class Order(models.Model):
+    _name = "phone.order"
+    _description = "Order"
+
+    phone_ids = fields.Many2many('phone')
+
