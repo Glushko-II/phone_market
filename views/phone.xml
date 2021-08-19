@@ -6,8 +6,22 @@
             <field name="view_mode">tree,form</field>
     </record>
 
+    <record id='manufacturer_action' model='ir.actions.act_window'>
+            <field name="name">Phone manufacturer</field>
+            <field name="res_model">phone.manufacturer</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id='model_action' model='ir.actions.act_window'>
+            <field name="name">Phone model</field>
+            <field name="res_model">phone.model</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+
     <menuitem name="Phone market" id="phone_base_menu" />
-    <menuitem name="Phones" id="phones_menu" parent="phone_base_menu" action="phone_action"/>
+    <menuitem name="Phone" id="phones_menu" parent="phone_base_menu" action="phone_action"/>
+    <menuitem name="Manufacturer" id="manufacturers_menu" parent="phone_base_menu" action="manufacturer_action"/>
+    <menuitem name="Model" id="model_menu" parent="phone_base_menu" action="model_action"/>
 
     <!-- Form View -->
     <record id="phone_view_form" model="ir.ui.view">
