@@ -2,14 +2,14 @@
     'name': "Phone market",
     'version': '1.0',
     'depends': ['base'],
-    'author': "Author Name",
-    'category': 'Category',
+    'author': "Ivan Glushko",
+    'category': 'Sales',
     'description': """
     Description text
     """,
     # data files always loaded at installation
     'data': [
-        'views/mymodule_view.xml',
+        # 'views/phone_property_views.xml',
     ],
     # data files containing optionally loaded demonstration data
     'demo': [

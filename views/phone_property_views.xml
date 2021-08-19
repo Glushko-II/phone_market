@@ -1,0 +1,6 @@
+<act_window
+        id="action_all_customers"
+        name="Phone"
+        res_model="phone"
+        view_mode="tree,form"
+        limit="20"/>
