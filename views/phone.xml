@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id='phone_order_action' model='ir.actions.act_window'>
-            <field name="name">Order</field>
-            <field name="res_model">phone.order</field>
-            <field name="view_mode">tree,form</field>
-    </record>
-
     <record id='phone_action' model='ir.actions.act_window'>
             <field name="name">Phone</field>
             <field name="res_model">phone</field>
@@ -26,7 +20,6 @@
     </record>
 
     <menuitem name="Phone market" id="phone_base_menu"/>
-    <menuitem name="Order" id="order_menu" parent="phone_base_menu" action="phone_order_action"/>
     <menuitem name="Phone" id="phones_menu" parent="phone_base_menu" action="phone_action"/>
     <menuitem name="Manufacturer" id="manufacturers_menu" parent="phone_base_menu" action="manufacturer_action"/>
     <menuitem name="Model" id="model_menu" parent="phone_base_menu" action="model_action"/>
@@ -39,8 +32,38 @@
             <form>
                 <group>
                     <group>
-                        <field name="manufacturer_ids" widget="many2many_tags"/>
-                        <field name="model_ids" widget="many2many_tags"/>
+                        <field name="manufacturer_ids" widget="many2one_tags"/>
+                        <field name="model_ids" widget="many2one_tags"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Form View manufacturer -->
+    <record id="manufacturer_view_form" model="ir.ui.view">
+        <field name="name">Manufacturer</field>
+        <field name="model">phone.manufacturer</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name" string="Manufacturer"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Form View model -->
+    <record id="model_view_form" model="ir.ui.view">
+        <field name="name">Model</field>
+        <field name="model">phone.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name" string="Model"/>
                     </group>
                 </group>
             </form>
@@ -53,47 +76,30 @@
         <field name="model">phone</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="manufacturer_ids" widget="many2many_tags"/> <field name="model_ids" widget="many2many_tags"/>
+                <field name="manufacturer_ids" widget="many2one_tags"/>
+                <field name="model_ids" widget="many2one_tags"/>
             </tree>
         </field>
     </record>
 
-    <!-- Search View Phone -->
-    <record id="phone_view_search" model="ir.ui.view">
-        <field name="name">Phone Search</field>
-        <field name="model">phone</field>
-        <field name="arch" type="xml">
-            <search>
-                <field name="manufacturer_ids"/>
-                <filter string="Without manufacturer" name="without_manufacturer" domain="[('manufacturer_ids','=',False)]"/>
-                <field name="model_ids"/>
-                <filter string="Without model" name="without_model" domain="[('model_ids','=',False)]"/>
-            </search>
-        </field>
-    </record>
-
-        <!-- Form View Order -->
-    <record id="phone_order_view_form" model="ir.ui.view">
-        <field name="name">Order</field>
-        <field name="model">phone.order</field>
-        <field name="arch" type="xml">
-            <form>
-                <group>
-                    <group>
-                        <field name="phone_ids" widget="many2many_tags"/>
-                    </group>
-                </group>
-            </form>
-        </field>
-    </record>
-
-            <!-- Tree View Order-->
-        <record id="phone_order_view_tree" model="ir.ui.view">
-        <field name="name">Orders List</field>
-        <field name="model">phone.order</field>
+            <!-- Tree View manufacturer-->
+    <record id="manufacturer_view_tree" model="ir.ui.view">
+        <field name="name">Manufacturer List</field>
+        <field name="model">phone.manufacturer</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="id"/><field name="phone_ids" widget="many2many_tags"/>
+                <field name="name" string="Manufacturer"/>
+            </tree>
+        </field>
+    </record>
+
+            <!-- Tree View model-->
+    <record id="model_view_tree" model="ir.ui.view">
+        <field name="name">Model List</field>
+        <field name="model">phone.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Model"/>
             </tree>
         </field>
     </record>
