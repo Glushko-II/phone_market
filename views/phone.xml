@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <record id='orders_action' model='ir.actions.act_window'>
+            <field name="name">Orders</field>
+            <field name="res_model">orders</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+
     <record id='phone_action' model='ir.actions.act_window'>
             <field name="name">Phone</field>
             <field name="res_model">phone</field>
@@ -20,9 +26,26 @@
     </record>
 
     <menuitem name="Phone market" id="phone_base_menu"/>
+    <menuitem name="Orders" id="orders_menu" parent="phone_base_menu" action="orders_action"/>
     <menuitem name="Phone" id="phones_menu" parent="phone_base_menu" action="phone_action"/>
     <menuitem name="Manufacturer" id="manufacturers_menu" parent="phone_base_menu" action="manufacturer_action"/>
     <menuitem name="Model" id="model_menu" parent="phone_base_menu" action="model_action"/>
+
+    <!-- Form View Orders -->
+    <record id="orders_view_form" model="ir.ui.view">
+        <field name="name">Orders</field>
+        <field name="model">orders</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="manufacturer_ids" widget="many2one_tags"/>
+                        <field name="model_ids" widget="many2one_tags"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
 
     <!-- Form View Phone -->
     <record id="phone_view_form" model="ir.ui.view">
@@ -67,6 +90,18 @@
                     </group>
                 </group>
             </form>
+        </field>
+    </record>
+
+            <!-- Tree View Orders-->
+    <record id="phone_view_tree" model="ir.ui.view">
+        <field name="name">Orders List</field>
+        <field name="model">orders</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="manufacturer_ids"/>
+                <field name="model_ids"/>
+            </tree>
         </field>
     </record>
 

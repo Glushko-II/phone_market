@@ -6,7 +6,6 @@ class PhoneManufacturer(models.Model):
     _description = "Phone Manufacturer"
 
     name = fields.Char()
-#    phone_id = fields.Many2one('phone')
 
 
 class PhoneModel(models.Model):
@@ -14,12 +13,19 @@ class PhoneModel(models.Model):
     _description = "Phone Model"
 
     name = fields.Char()
-#    phone_id = fields.Many2one('phone')
 
 
 class Phone(models.Model):
     _name = "phone"
     _description = "Phone"
+
+    manufacturer_ids = fields.Many2one('phone.manufacturer', string='Manufacturer')
+    model_ids = fields.Many2one('phone.model', string='Model')
+
+
+class Orders(models.Model):
+    _name = "orders"
+    _description = "Orders"
 
     manufacturer_ids = fields.Many2one('phone.manufacturer', string='Manufacturer')
     model_ids = fields.Many2one('phone.model', string='Model')
