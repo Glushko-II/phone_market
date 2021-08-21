@@ -29,6 +29,8 @@ class Orders(models.Model):
 
     manufacturer_ids = fields.Many2one('phone.manufacturer', string='Manufacturer')
     model_ids = fields.Many2one('phone.model', string='Model')
+    order_date = fields.Date(default=fields.Date.today, tracking=True)
+    
 
     @api.onchange('manufacturer_ids')
     def set_domain_for_model_id(self):

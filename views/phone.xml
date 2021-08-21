@@ -37,12 +37,17 @@
         <field name="model">orders</field>
         <field name="arch" type="xml">
             <form>
-                <group>
+                <sheet>
                     <group>
-                        <field name="manufacturer_ids" widget="many2one_tags"/>
-                        <field name="model_ids" widget="many2one_tags"/>
+                        <group>
+                            <field name="manufacturer_ids" widget="many2one_tags"/>
+                            <field name="model_ids" widget="many2one_tags"/>
+                            <div class="oe_read_only">
+                                <field name="order_date"/>
+                            </div>
+                        </group>
                     </group>
-                </group>
+                </sheet>
             </form>
         </field>
     </record>
@@ -53,12 +58,14 @@
         <field name="model">phone</field>
         <field name="arch" type="xml">
             <form>
-                <group>
+                <sheet>
                     <group>
-                        <field name="manufacturer_ids" widget="many2one_tags"/>
-                        <field name="model_ids" widget="many2one_tags"/>
+                        <group>
+                            <field name="manufacturer_ids" widget="many2one_tags"/>
+                            <field name="model_ids" widget="many2one_tags"/>
+                        </group>
                     </group>
-                </group>
+                </sheet>
             </form>
         </field>
     </record>
@@ -69,11 +76,13 @@
         <field name="model">phone.manufacturer</field>
         <field name="arch" type="xml">
             <form>
-                <group>
+                <sheet>
                     <group>
-                        <field name="name" string="Manufacturer"/>
+                        <group>
+                            <field name="name" string="Manufacturer"/>
+                        </group>
                     </group>
-                </group>
+                </sheet>
             </form>
         </field>
     </record>
@@ -84,23 +93,25 @@
         <field name="model">phone.model</field>
         <field name="arch" type="xml">
             <form>
-                <group>
+                <sheet>
                     <group>
-                        <field name="name" string="Model"/>
+                        <group>
+                            <field name="name" string="Model"/>
+                        </group>
                     </group>
-                </group>
+                </sheet>
             </form>
         </field>
     </record>
 
             <!-- Tree View Orders-->
-    <record id="phone_view_tree" model="ir.ui.view">
+    <record id="order_view_tree" model="ir.ui.view">
         <field name="name">Orders List</field>
         <field name="model">orders</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="manufacturer_ids"/>
-                <field name="model_ids"/>
+                <field name="id" string="Number"/>
+                <field name="order_date"/>
             </tree>
         </field>
     </record>
@@ -140,5 +151,4 @@
     </record>
 
 </odoo>
-
 
